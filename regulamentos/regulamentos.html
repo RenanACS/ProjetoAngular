@@ -1,0 +1,30 @@
+<h2 style="color: green;">Normas Acadêmicas</h2>
+
+<!-- FILTRO -->
+<div style="margin-bottom: 20px;">
+  <label><strong>Filtrar por categoria:</strong></label>
+
+  <select [(ngModel)]="filtro" style="margin-left:10px;">
+    <option value="">Todas</option>
+    <option *ngFor="let cat of categorias">{{ cat }}</option>
+  </select>
+</div>
+
+<hr>
+
+<!-- LISTA -->
+<div *ngFor="let item of getRegulamentosFiltrados()"
+     style="border:1px solid green; padding:10px; margin:10px; border-radius:8px; background:#f0fff0;">
+
+  <div (click)="toggle(item)" style="cursor:pointer;">
+    <strong style="color:green;">
+      {{ item.titulo }} ({{ item.categoria }})
+      {{ item.aberto ? '⬆️' : '⬇️' }}
+    </strong>
+  </div>
+
+  <p *ngIf="item.aberto" style="margin-top:10px;">
+    {{ item.descricao }}
+  </p>
+
+</div>
