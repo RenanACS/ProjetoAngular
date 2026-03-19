@@ -1,0 +1,68 @@
+<div class="bg-white border border-emerald-100 rounded-xl shadow-sm hover:shadow-md hover:border-emerald-300 transition-all duration-300 overflow-hidden">
+  
+  <div class="p-5 flex justify-between items-center cursor-pointer group relative z-10 bg-white" (click)="lab.expandido = !lab.expandido">
+    <div>
+      <h3 class="text-xl font-bold text-emerald-900 group-hover:text-emerald-600 transition-colors duration-200">
+        {{ lab.nome }}
+      </h3>
+      <p class="text-emerald-600/80 font-medium mt-1 text-sm flex items-center gap-1">
+        <span class="text-emerald-500 text-lg">🕒</span> Geral: {{ lab.horarios }}
+      </p>
+    </div>
+    
+    <button class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-100"
+            [style.transform]="lab.expandido ? 'rotate(180deg)' : 'rotate(0deg)'">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="grid transition-[grid-template-rows] duration-300 ease-in-out"
+       [style.grid-template-rows]="lab.expandido ? '1fr' : '0fr'">
+    
+    <div class="overflow-hidden">
+      <div class="p-5 pt-4 border-t border-emerald-100 bg-emerald-50/50 flex flex-col gap-5">
+        
+        <div>
+          <h4 class="font-bold text-emerald-800 mb-3 text-sm uppercase tracking-wider flex items-center gap-2">
+            <span class="text-emerald-500">📅</span> Agenda de Hoje
+          </h4>
+          
+          @if (lab.reservas.length > 0) {
+            <ul class="space-y-2">
+              @for (reserva of lab.reservas; track $index) {
+                <li class="flex justify-between items-center bg-white p-2.5 rounded-lg border border-emerald-100 shadow-sm text-sm">
+                  <span class="font-semibold text-emerald-700">{{ reserva.professor }}</span>
+                  <span class="text-emerald-600 bg-emerald-100/50 px-2 py-1 rounded-md text-xs font-bold border border-emerald-200">
+                    {{ reserva.horario }}
+                  </span>
+                </li>
+              }
+            </ul>
+          } @else {
+            <div class="bg-white/60 border border-emerald-100 border-dashed rounded-lg p-3 text-center">
+              <p class="text-sm text-emerald-600 font-medium italic">Livre para uso (sem reservas hoje).</p>
+            </div>
+          }
+        </div>
+
+        <div>
+          <h4 class="font-bold text-emerald-800 mb-3 text-sm uppercase tracking-wider flex items-center gap-2">
+            <span class="text-emerald-500">📋</span> Regras de Uso
+          </h4>
+          <ul class="space-y-2">
+            @for (regra of lab.regras; track regra) {
+              <li class="flex items-start text-emerald-700 text-sm">
+                <span class="text-emerald-400 mr-2">✦</span>
+                {{ regra }}
+              </li>
+            }
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+</div>
