@@ -1,30 +1,119 @@
-<h2 style="color: green;">Normas Acadêmicas</h2>
+<div style="background-color: rgba(0, 77, 0, 0.85); min-height: 100vh; padding: 20px; font-family: Arial, sans-serif;">
 
-<!-- FILTRO -->
-<div style="margin-bottom: 20px;">
-  <label><strong>Filtrar por categoria:</strong></label>
-
-  <select [(ngModel)]="filtro" style="margin-left:10px;">
-    <option value="">Todas</option>
-    <option *ngFor="let cat of categorias">{{ cat }}</option>
-  </select>
-</div>
-
-<hr>
-
-<!-- LISTA -->
-<div *ngFor="let item of getRegulamentosFiltrados()"
-     style="border:1px solid green; padding:10px; margin:10px; border-radius:8px; background:#f0fff0;">
-
-  <div (click)="toggle(item)" style="cursor:pointer;">
-    <strong style="color:green;">
-      {{ item.titulo }} ({{ item.categoria }})
-      {{ item.aberto ? '⬆️' : '⬇️' }}
-    </strong>
+  <!-- Botão Voltar -->
+  <div style="max-width: 800px; margin: auto;">
+    <button class="btn-voltar" (click)="voltar()">← Voltar</button>
   </div>
 
-  <p *ngIf="item.aberto" style="margin-top:10px;">
-    {{ item.descricao }}
-  </p>
+  <!-- Conteúdo central -->
+  <div style="max-width: 800px; margin: auto; text-align: center;">
+
+    <!-- Título com ícone neutro e profundidade -->
+    <h2 class="titulo-principal">
+      <span>📖</span>
+      <span>Regulamentos - UNAMA</span>
+    </h2>
+
+    <!-- Subtítulo -->
+    <h2 class="subtitulo-principal">
+      <span>Normas Acadêmicas da Instituição</span>
+    </h2>
+
+    <!-- Filtro de categoria -->
+    <div style="margin-bottom: 25px;">
+      <label style="color: white; font-weight: bold; margin-right: 10px;">Filtrar por categoria:</label>
+      <select class="select-categoria" [(ngModel)]="categoriaSelecionada">
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <!-- Lista de Regulamentos -->
+    <div *ngFor="let item of getRegulamentosFiltrados()" 
+         style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 3px 6px rgba(0,0,0,0.2);">
+
+      <!-- Título clicável em negrito -->
+      <h3 (click)="toggle(item)" 
+          style="margin: 0; cursor: pointer; color: #004d00; display: inline-block; font-weight: bold;">
+        {{ item.titulo }}
+      </h3>
+
+      <!-- Descrição expandida -->
+      <p *ngIf="item.aberto" style="margin-top: 15px; color: #333;">
+        {{ item.descricao }}
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- Rodapé full width com bordas arredondadas -->
+  <footer style="margin-top: 40px; padding: 20px; text-align: center; background-color: #006600; color: white; border-radius: 12px;">
+    <p style="margin: 0; font-weight: bold;">Universidade da Amazônia - UNAMA</p>
+    <p style="margin: 5px 0; font-size: 14px;">Endereço: Av. Alcindo Cacela, 287 – Umarizal, Belém – PA | Telefone: (91) 4000-0000</p>
+    <p style="margin: 0; font-size: 12px;">© 2026 UNAMA. Todos os direitos reservados.</p>
+  </footer>
 
 </div>
+
+<!-- CSS inline para hover, cores corretas e profundidade do título -->
+<style>
+  /* Botão Voltar */
+  .btn-voltar {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .btn-voltar:hover {
+    background: white;
+    color: #006600;
+  }
+
+  /* Select categoria */
+  .select-categoria {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    border: 2px solid white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .select-categoria:hover,
+  .select-categoria:focus {
+    background: white;
+    color: #006600;
+    outline: none;
+  }
+  .select-categoria option {
+    color: #004d00;
+  }
+
+  /* Título principal com profundidade */
+  .titulo-principal {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6), 4px 4px 6px rgba(0,0,0,0.3);
+  }
+
+  /* Subtítulo */
+  .subtitulo-principal {
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  }
+</style>
