@@ -1,1 +1,53 @@
-<app-laboratorio-lista></app-laboratorio-lista>
+<div class="min-h-screen bg-[#f5f7f2] p-4 sm:p-8">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-10 h-10 bg-[#2d5016] rounded-xl flex items-center justify-center flex-shrink-0">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2"  y="3" width="16" height="14" rx="3" stroke="white" stroke-width="1.5"/>
+          <path d="M2 7h16" stroke="white" stroke-width="1.5"/>
+          <rect x="6"  y="10" width="2" height="2" rx="0.5" fill="white"/>
+          <rect x="9"  y="10" width="2" height="2" rx="0.5" fill="white"/>
+          <rect x="12" y="10" width="2" height="2" rx="0.5" fill="white"/>
+          <rect x="6"  y="13" width="2" height="2" rx="0.5" fill="white"/>
+          <rect x="9"  y="13" width="2" height="2" rx="0.5" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <p class="text-xs text-[#5a8a2a] font-semibold tracking-widest uppercase">
+          Guia do Estudante · UNAMA
+        </p>
+        <h1 class="text-2xl text-gray-900 leading-tight"
+          style="font-family: 'DM Serif Display', serif">
+          Calendário Acadêmico <span class="text-[#2d5016]">2026</span>
+        </h1>
+      </div>
+      <div class="ml-auto hidden sm:flex items-center gap-2 bg-[#e8f0dc] px-4 py-2 rounded-xl">
+        <div class="w-2 h-2 bg-[#5a8a2a] rounded-full animate-pulse"></div>
+        <span class="text-xs text-[#2d5016] font-medium">1º semestre ativo</span>
+      </div>
+    </div>
+
+    <app-filtro
+      [filtrosAtivos]="filtrosAtivos"
+      (filtroAlterado)="onFiltroAlterado($event)">
+    </app-filtro>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+      <div class="lg:col-span-2">
+        <app-calendario
+          [eventos]="eventos"
+          [filtrosAtivos]="filtrosAtivos"
+          (diaSelecionado)="onDiaSelecionado($event)">
+        </app-calendario>
+      </div>
+      <app-painel-eventos
+        [diaSelecionado]="diaSelecionadoAtual"
+        [eventosDoDia]="eventosDoDia"
+        [eventos]="eventos"
+        [filtrosAtivos]="filtrosAtivos">
+      </app-painel-eventos>
+    </div>
+
+  </div>
+</div>

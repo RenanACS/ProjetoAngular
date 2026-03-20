@@ -1,0 +1,13 @@
+<div class="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
+  <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">
+    Filtrar por tipo
+  </p>
+  <div class="flex flex-wrap gap-2">
+    <button
+      *ngFor="let chip of chips"
+      [class]="getClasseChip(chip.tipo)"
+      (click)="toggleFiltro(chip.tipo)">
+      {{ chip.label }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="flex flex-col gap-4">
+
+  <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+    <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Dia selecionado</p>
+    <p class="text-2xl text-gray-900 mb-3" style="font-family: 'DM Serif Display', serif">{{ dataFormatada }}</p>
+    <p *ngIf="eventosDoDia.length === 0" class="text-sm text-gray-400 italic">
+      {{ diaSelecionado ? 'Nenhum evento neste dia.' : 'Clique em um dia para ver os eventos.' }}
+    </p>
+    <div *ngFor="let ev of eventosDoDia" class="mb-2 rounded-xl p-3 border fade-in" [class]="getClasseCard(ev.tipo)">
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-xs font-semibold px-2 py-0.5 rounded-full border" [class]="getClasseBadge(ev.tipo)">
+          {{ labelTipo(ev.tipo) }}
+        </span>
+      </div>
+      <p class="text-sm font-semibold" [class]="getClasseTitulo(ev.tipo)">{{ ev.titulo }}</p>
+      <p class="text-xs text-gray-500 mt-0.5">{{ ev.desc }}</p>
+    </div>
+  </div>
+
+  <div class="bg-[#2d5016] rounded-2xl p-5 text-white shadow-sm">
+    <p class="text-xs font-semibold uppercase tracking-widest text-green-200 mb-3">Resumo do mês</p>
+    <div class="grid grid-cols-2 gap-3">
+      <div *ngFor="let item of resumoItems" class="bg-white/10 rounded-xl p-3 text-center">
+        <div class="text-xl mb-0.5">{{ item.icone }}</div>
+        <div class="text-2xl font-bold">{{ item.count }}</div>
+        <div class="text-xs text-green-200">{{ item.label }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+    <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Próximos eventos</p>
+    <p *ngIf="proximosItens.length === 0" class="text-xs text-gray-400 italic">Nenhum evento futuro neste mês.</p>
+    <div *ngFor="let item of proximosItens" class="flex items-center gap-3 mb-2 cursor-pointer hover:opacity-75 transition-opacity">
+      <div class="w-8 h-8 rounded-lg border flex items-center justify-center text-xs font-bold flex-shrink-0"
+        [class]="getClasseCard(item.tipo) + ' ' + getClasseBadge(item.tipo)">
+        {{ item.dia }}
+      </div>
+      <div class="min-w-0">
+        <p class="text-xs font-semibold text-gray-700 truncate">{{ item.titulo }}</p>
+        <p class="text-xs text-gray-400">{{ labelTipo(item.tipo) }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
