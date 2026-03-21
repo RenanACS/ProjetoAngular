@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { FormsModule, } from '@angular/forms';
+import { CommonModule,NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-acesso-portal',
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, CommonModule],
   templateUrl: './acesso-portal.html',
   styleUrl: './acesso-portal.css'
 })
@@ -17,6 +18,7 @@ export class AcessoPortal {
   senha: string = '';
   nome: string = '';
 
+  constructor(private router: Router){}
   trocarModo(novoModo: 'login' | 'cadastro') {
     this.modo = novoModo;
   }
@@ -24,6 +26,7 @@ export class AcessoPortal {
   login() {
     if (this.email && this.senha) {
       alert('Login realizado com sucesso!');
+      this.router.navigate(['/portal'])
     } else {
       alert('Preencha todos os campos!');
     }

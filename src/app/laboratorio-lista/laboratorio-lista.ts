@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LaboratorioItem } from '../laboratorio-item/laboratorio-item';
-
+import { RouterModule } from '@angular/router';
 export interface Reserva {
   professor: string;
   horario: string;
@@ -19,7 +19,7 @@ export interface Laboratorio {
 @Component({
   selector: 'app-laboratorio-lista',
   standalone: true,
-  imports: [CommonModule, LaboratorioItem], 
+  imports: [CommonModule, LaboratorioItem, RouterModule], 
   templateUrl: './laboratorio-lista.html'
 })
 export class LaboratorioLista {

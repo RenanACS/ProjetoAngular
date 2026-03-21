@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FiltroComponent } from '../filtro/filtro.component';
 import { CalendarioComponent } from '../calendario/calendario.component';
 import { PainelEventosComponent } from '../painel-eventos/painel-eventos.component';
-
+import { RouterModule } from '@angular/router';
 // 1. IMPORTANDO AS PEÇAS DO QUEBRA-CABEÇA
 // Dica: Se o VS Code sublinhar de vermelho alguma dessas 3 linhas abaixo, 
 // apague o texto dentro das aspas, aperte Ctrl+Espaço e selecione o caminho certo!
@@ -14,9 +14,11 @@ import { PainelEventosComponent } from '../painel-eventos/painel-eventos.compone
   // 2. A MÁGICA: Colocando os componentes aqui, os erros do HTML somem na hora!
   imports: [
     CommonModule, 
+    RouterModule,
     FiltroComponent, 
     CalendarioComponent, 
-    PainelEventosComponent
+    PainelEventosComponent,
+    RouterModule
   ],
   templateUrl: './tela-calendario.html',
   styleUrl: './tela-calendario.css'
