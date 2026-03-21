@@ -1,0 +1,85 @@
+<div class="layout">
+
+  <aside class="sidebar">
+    <h2>Portal do Aluno</h2>
+
+    <nav>
+      <a class="active">📚 Materiais</a>
+      <a>📜 Regulamentos</a>
+      <a>🗓️ Calendário Acadêmico</a>
+      <a>🧪 Laboratórios</a>
+      <a>💻 Biblioteca Virtual</a>
+      <a>🏢 Secretaria</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <button class="logout" (click)="voltarLogin()">
+      ← Voltar para login
+    </button>
+
+    <h1>Minhas Matérias</h1>
+
+    <div class="cards">
+
+      <!-- CARD 1 -->
+      <div class="card">
+        <h3>Arquitetura de Software</h3>
+        <p>Padrões, microserviços e escalabilidade.</p>
+        <span>Média: 9.2</span>
+
+        <button (click)="toggleMaterial(0)">Ver Material</button>
+
+        <div *ngIf="materiaAberta === 0" class="material">
+          <p><strong>Aula 1:</strong> Introdução à Arquitetura</p>
+          <p><strong>Arquivo:</strong> arquitetura-slide.pdf</p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+        <h3>Banco de Dados</h3>
+        <p>Modelagem e consultas SQL.</p>
+        <span>Média: 9.8</span>
+
+        <button (click)="toggleMaterial(1)">Ver Material</button>
+
+        <div *ngIf="materiaAberta === 1" class="material">
+          <p><strong>Aula 3:</strong> JOIN e SELECT</p>
+          <p><strong>Arquivo:</strong> banco-dados-slide.pdf</p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card">
+        <h3>Algoritmos</h3>
+        <p>Estruturas de dados e lógica.</p>
+        <span>Média: 8.5</span>
+
+        <button (click)="toggleMaterial(2)">Ver Material</button>
+
+        <div *ngIf="materiaAberta === 2" class="material">
+          <p><strong>Aula 2:</strong> Vetores e Matrizes</p>
+          <p><strong>Arquivo:</strong> algoritmos-slide.pdf</p>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="card">
+        <h3>Sistemas Operacionais</h3>
+        <p>Processos, memória e escalonamento.</p>
+        <span>Média: 8.9</span>
+
+        <button (click)="toggleMaterial(3)">Ver Material</button>
+
+        <div *ngIf="materiaAberta === 3" class="material">
+          <p><strong>Aula 4:</strong> Escalonamento</p>
+          <p><strong>Arquivo:</strong> so-slide.pdf</p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>

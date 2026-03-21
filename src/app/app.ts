@@ -4,11 +4,11 @@ import { Evento, DiaEvento, FiltrosAtivos, TipoEvento } from './models/evento.mo
 import { FiltroComponent }        from './filtro/filtro.component';
 import { CalendarioComponent }    from './calendario/calendario.component';
 import { PainelEventosComponent } from './painel-eventos/painel-eventos.component';
-
+import {RouterOutlet} from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FiltroComponent, CalendarioComponent, PainelEventosComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

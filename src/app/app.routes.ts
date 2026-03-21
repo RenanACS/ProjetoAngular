@@ -1,3 +1,5 @@
 import { Routes } from '@angular/router';
-
-export const routes: Routes = [];
+import { TelaCalendario } from './tela-calendario/tela-calendario';
+export const routes: Routes = [{
+    path:'',component:TelaCalendario
+},];
