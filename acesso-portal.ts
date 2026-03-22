@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import {CommonModule} from '@angular/common'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-acesso-portal',
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule,CommonModule ,NgIf],
   templateUrl: './acesso-portal.html',
   styleUrl: './acesso-portal.css'
 })
 export class AcessoPortal {
-
+  constructor(private router: Router) {}
   modo: 'login' | 'cadastro' = 'login';
 
   email: string = '';

@@ -1,43 +1,62 @@
-<div class="container">
-
-  <div class="card">
-
-    <img src="assets/logo.png" alt="logo" class="logo">
-    <h2 *ngIf="modo === 'login'">Portal do Aluno</h2>
-    <h2 *ngIf="modo === 'cadastro'">Criar Conta</h2>
-
-    <!-- LOGIN -->
-    <div *ngIf="modo === 'login'">
-
-      <input type="email" placeholder="Email institucional" [(ngModel)]="email">
-
-      <input type="password" placeholder="Senha" [(ngModel)]="senha">
-
-      <button (click)="login()">Entrar</button>
-
-      <p class="link" (click)="trocarModo('cadastro')">
-        Não tem conta? Criar conta
+<div class="min-h-screen w-full flex absolute top-0 left-0 m-0 p-0 bg-white font-sans">
+  
+  <div class="hidden md:flex md:w-1/2 relative items-center justify-center bg-emerald-900"
+       style="background-image: linear-gradient(rgba(6, 78, 59, 0.8), rgba(6, 78, 59, 0.95)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+    <div class="p-12 text-center text-white z-10">
+      <div class="text-7xl mb-6">🎓</div>
+      <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Portal do Aluno</h1>
+      <p class="text-xl text-emerald-100 font-medium max-w-lg mx-auto">
+        Acesse seu ambiente acadêmico, notas, laboratórios, secretaria e biblioteca virtual em um só lugar.
       </p>
-
     </div>
-
-    <!-- CADASTRO -->
-    <div *ngIf="modo === 'cadastro'">
-
-      <input type="text" placeholder="Nome completo" [(ngModel)]="nome">
-
-      <input type="email" placeholder="Email institucional" [(ngModel)]="email">
-
-      <input type="password" placeholder="Senha" [(ngModel)]="senha">
-
-      <button (click)="cadastrar()">Criar conta</button>
-
-      <p class="link" (click)="trocarModo('login')">
-        Já tenho conta
-      </p>
-
-    </div>
-
   </div>
 
+  <div class="w-full md:w-1/2 flex items-center justify-center bg-[#ecfdf5]">
+    
+    <div class="max-w-md w-full p-10 bg-white rounded-3xl shadow-xl border border-gray-100 mx-4">
+      
+      <div class="text-center mb-8 md:hidden">
+         <div class="text-5xl mb-4">🎓</div>
+         <h2 class="text-3xl font-extrabold text-emerald-900">Portal do Aluno</h2>
+      </div>
+
+      <h2 class="text-3xl font-extrabold text-gray-800 mb-2 text-center md:text-left">Bem-vindo(a)!</h2>
+      <p class="text-gray-500 mb-8 text-center md:text-left font-medium">Insira suas credenciais para acessar o sistema.</p>
+
+      <form class="space-y-6">
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-2">E-mail Institucional</label>
+          <input type="email" placeholder="aluno@unama.edu.br"
+                 class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all text-gray-900 text-lg" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-gray-700 mb-2">Senha</label>
+          <input type="password" placeholder="••••••••"
+                 class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all text-gray-900 text-lg" />
+        </div>
+
+        <div class="flex items-center justify-between text-sm mt-4">
+          <label class="flex items-center text-gray-600 cursor-pointer font-medium">
+            <input type="checkbox" class="mr-2 text-emerald-600 rounded focus:ring-emerald-500 w-5 h-5 cursor-pointer"> 
+            Lembrar-me
+          </label>
+          <a href="#" class="text-emerald-600 hover:text-emerald-800 font-bold transition-colors">Esqueceu a senha?</a>
+        </div>
+
+        <button routerLink="/portal"
+                class="w-full bg-[#10b981] hover:bg-[#059669] text-white font-extrabold py-4 px-4 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex justify-center items-center gap-2 mt-6 text-lg">
+          Acessar Portal
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </form>
+
+      <div class="mt-8 text-center text-sm text-gray-600 border-t border-gray-100 pt-6">
+        Primeiro acesso? <a href="#" class="text-emerald-600 font-extrabold hover:underline">Crie sua senha aqui</a>
+      </div>
+      
+    </div>
+  </div>
 </div>
