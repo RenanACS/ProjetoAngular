@@ -4,6 +4,7 @@ import { LaboratorioLista } from './laboratorio-lista/laboratorio-lista';
 import { AcessoPortal } from './acesso-portal/acesso-portal';
 import { Portal } from './portal/portal';
 import { Regulamentos } from './regulamentos/regulamentos';
+import { BibliotecaComponent } from './biblioteca/biblioteca.component';
 
 export const routes: Routes = [
   // 1. As rotas específicas vêm primeiro
@@ -13,5 +14,6 @@ export const routes: Routes = [
   {path: 'regulamentos', component: Regulamentos},
   // 2. A rota vazia SEMPRE por último e com pathMatch: 'full'
   // Isso diz ao Angular: "Só mostre o calendário se a URL estiver TOTALMENTE vazia"
+  {path:'biblioteca', component:BibliotecaComponent},
   { path: '', component: TelaCalendario, pathMatch: 'full' }
 ];
