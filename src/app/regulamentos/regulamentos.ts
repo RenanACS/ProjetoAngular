@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-regulamentos',
@@ -9,8 +10,11 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './regulamentos.html'
 })
 export class Regulamentos {
-
+  constructor(private router: Router){}
   // Categoria selecionada no filtro
+
+  //construtor aqui
+
   categoriaSelecionada: string = 'Todas';
 
   // Lista de categorias disponíveis
@@ -63,7 +67,7 @@ export class Regulamentos {
 
   // Botão voltar
   voltar() {
-    alert('Botão Voltar clicado! Implemente navegação para a página inicial.');
+    this.router.navigate(['/portal'])
   }
 
   // Retorna regulamentos filtrados por categoria

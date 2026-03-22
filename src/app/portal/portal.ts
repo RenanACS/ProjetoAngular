@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-portal',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './portal.html',
   styleUrl: './portal.css'
 })
